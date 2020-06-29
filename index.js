@@ -3,6 +3,7 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const db = require('./config/mongoose');
+const cookieParser = require('cookie-parser');
 const port = 8000;
 const passport = require('passport');
 const session = require('express-session');
@@ -10,6 +11,7 @@ const passportLocal = require('./config/passport-local-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy');
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
+const customMware = require('./config/middleware');
 
 
 
@@ -52,7 +54,6 @@ app.use(session({
         {
             mongooseConnection: db,
             autoRemove: 'disabled'
-        
         },
         function(err){
             console.log(err ||  'connect-mongodb setup ok');
@@ -65,7 +66,8 @@ app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
 
-
+app.use(flash());
+app.use(customMware.setFlash);
 
 // use express router
 app.use('/', require('./routes'));

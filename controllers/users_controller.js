@@ -1,5 +1,15 @@
 const User = require('../models/user');
 
+module.exports.profile = function(req, res){
+    User.findById(req.params.id, function(err, user){
+        return res.render('users_profile', {
+            title: "User Profile",
+            profile_user: user
+        });
+    });
+}
+
+
 module.exports.update = function(req, res){
     if(req.user.id == req.params.id){
         User.findByIdAndUpdate(req.params.id, {name: req.body.name, email: req.body.email}, function(err, user){  // we can also use req.body instead of this as it is same
