@@ -28,8 +28,6 @@ Base project with various authentication methods already setup.
 - HTML
 - CSS
 
-[Back To The Top](#read-me-template)
-
 ---
 
 ## How To Use
@@ -56,5 +54,3 @@ Base project with various authentication methods already setup.
 ## Author Info
 
 - LinkedIn - [@lakshdhamija](https://www.linkedin.com/in/laksh-dhamija/)
-
-[Back To The Top](#read-me-template)
